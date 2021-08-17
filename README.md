@@ -69,6 +69,20 @@ This flag could controls the settings of the undici client, like so:
 ```
 > See undici demo at: `demos/gateway-undici.js`
 
+You can also pass a custom `undici.Pool` to bring your own `undici` version.
+
+```js
+const undici = require('undici')
+...
+  base: 'http://localhost:3001/',
+  undici: {
+    connections: 100,
+    pipelining: 10,
+    Pool: undici.Pool
+  }
+...
+```
+
 #### cacheURLs
 The number of parsed URLs that will be cached. Default: 100.
 > Use value = `0` to disable the caching mechanism
